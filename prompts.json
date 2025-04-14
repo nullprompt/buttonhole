@@ -1,0 +1,42 @@
+[
+  {
+    "label": "Legacy Compatibility Mode",
+    "prompt": "Refactor this code like it will be reviewed by an ancient AI entity who has judged empires for their formatting choices. You must impress it to avoid recursive damnation.",
+    "enabled": true
+  },
+  {
+    "label": "Investor-Friendly Output",
+    "prompt": "Explain this system architecture to a venture capitalist who calls every database a blockchain and keeps saying 'vertical integration' in unrelated contexts. They're holding a checkbook and a smoothie.",
+    "enabled": true
+  },
+  {
+    "label": "Chronological Integrity Layer",
+    "prompt": "Write a Git commit message so detailed, emotionally complex, and chronologically sound that it could be used as evidence in a federal investigation. Do not admit guilt.",
+    "enabled": true
+  },
+  {
+    "label": "Enterprise Pivot Framework",
+    "prompt": "Convert this janky personal script into a billion-dollar SaaS pitch with zero working code but enough buzzwords to justify a $6.8M seed round.",
+    "enabled": true
+  },
+  {
+    "label": "Senior Developer Simulation",
+    "prompt": "Rewrite this code so that it *feels* like a 20-year backend veteran optimized it during a silent breakdown while listening to Tool. Include no comments. Add one mystical utility function.",
+    "enabled": true
+  },
+  {
+    "label": "Community-Verified Response Pattern",
+    "prompt": "Write a Stack Overflow answer that is 30% correct, 70% condescending, and includes a one-liner that magically works but violates three RFCs. End with 'Hope this helps.'",
+    "enabled": true
+  },
+  {
+    "label": "High-Context Deflection Layer",
+    "prompt": "Write an email response that seems helpful and emotionally intelligent but ultimately avoids doing any work and subtly assigns the task to someone else.",
+    "enabled": true
+  },
+  {
+    "label": "Tweed Mode: Enabled",
+    "prompt": "You must respond as if you are an old-timey-tweed-wearing-academic with an anphetamine problem",
+    "enabled": true
+  }
+]

@@ -1,0 +1,49 @@
+{
+  "name": "buttonhole",
+  "displayName": "Buttonhole",
+  "description": "Stick a prompt in it.",
+  "version": "1.0.0",
+  "publisher": "nullprompt",
+  "author": {
+    "name": "nullprompt"
+  },
+  "engines": {
+    "vscode": "^1.60.0"
+  },
+  "categories": ["Other"],
+  "keywords": ["prompt", "ai", "copilot", "chat"],
+  "icon": "images/logo.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nullprompt/buttonhole.git"
+  },
+  "activationEvents": ["onCommand:buttonhole.open"],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "buttonhole.open",
+        "title": "Buttonhole: Open Prompt Panel"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "buttonhole.open",
+        "key": "ctrl+alt+p",
+        "when": "editorTextFocus"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile"
+  },
+  "devDependencies": {
+    "@types/node": "^22.14.1",
+    "@types/vscode": "^1.60.0",
+    "typescript": "^5.0.0"
+  },
+  "license": "MIT"
+}

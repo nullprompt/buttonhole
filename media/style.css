@@ -1,0 +1,478 @@
+﻿:root {
+  /* Base theme variables that reference VS Code theme */
+  --vsc-background-color: var(--vscode-editor-background);
+  --vsc-text-color: var(--vscode-editor-foreground);
+  --vsc-button-color: var(--vscode-button-background);
+  --vsc-button-hover-color: var(--vscode-button-hoverBackground);
+  --vsc-button-text-color: var(--vscode-button-foreground);
+  --vsc-border-color: var(--vscode-widget-border);
+  --vsc-input-background: var(--vscode-input-background);
+  --vsc-input-foreground: var(--vscode-input-foreground);
+  --vsc-accent-color: var(--vscode-focusBorder);
+  --vsc-disabled-color: var(--vscode-disabledForeground);
+  
+  /* Theme variables that can be overridden by custom settings */
+  --background-color: var(--vsc-background-color);
+  --text-color: var(--vsc-text-color);
+  --controls-color: var(--vsc-button-color);
+  --controls-hover-color: var(--vsc-button-hover-color);
+  --button-text-color: var(--vsc-button-text-color);
+  --border-color: var(--vsc-border-color);
+  --input-background: var(--vsc-input-background);
+  --input-foreground: var(--vsc-input-foreground);
+  --accent-color: var(--vsc-accent-color);
+  --disabled-color: var(--vsc-disabled-color);
+  
+  /* Additional UI variables */
+  --hover-color: rgba(255, 255, 255, 0.1);
+  --row-background: rgba(0, 0, 0, 0.1);
+  --row-hover-background: rgba(0, 0, 0, 0.2);
+  --shadow-color: rgba(0, 0, 0, 0.3);
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  color: var(--text-color);
+  background-color: var(--background-color);
+  margin: 0;
+  padding: 16px;
+}
+
+/* SVG Icon styling */
+.icon-svg {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+  vertical-align: text-bottom;
+}
+
+#container {
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.prompt-list {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  overflow: hidden;
+  min-height: 100px;
+  box-shadow: 0 1px 3px var(--shadow-color);
+}
+
+.prompt-header {
+  display: flex;
+  background-color: rgba(255, 255, 255, 0.05);
+  padding: 10px;
+  font-weight: 600;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.header-enabled {
+  flex: 0 0 70px;
+  text-align: center;
+}
+
+.header-label {
+  flex: 1;
+  padding-left: 6px;
+}
+
+.header-actions {
+  flex: 0 0 100px;
+  text-align: center;
+}
+
+.empty-state {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100px;
+  color: var(--disabled-color);
+  font-style: italic;
+  text-align: center;
+  padding: 0 20px;
+}
+
+.prompt-row {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid var(--border-color);
+  transition: all 0.2s ease;
+  cursor: pointer;
+  background-color: var(--row-background);
+  box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.05);
+  position: relative;
+  z-index: 1;
+}
+
+.prompt-row:last-child {
+  border-bottom: none;
+}
+
+.prompt-row:hover {
+  background-color: var(--row-hover-background);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 5px var(--shadow-color);
+  z-index: 2;
+}
+
+.prompt-row:active {
+  transform: translateY(0);
+  box-shadow: inset 0 1px 2px var(--shadow-color);
+}
+
+.prompt-row.disabled {
+  opacity: 0.7;
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.toggle-container {
+  flex: 0 0 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.prompt-toggle {
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border: 1px solid var(--border-color);
+  border-radius: 3px;
+  background-color: var(--input-background);
+  cursor: pointer;
+  position: relative;
+  box-shadow: 0 1px 2px var(--shadow-color);
+}
+
+.prompt-toggle:checked {
+  background-color: var(--controls-color, var(--vsc-button-color));
+  border-color: var(--controls-color, var(--vsc-button-color));
+}
+
+.prompt-toggle:checked::after {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 6px;
+  width: 3px;
+  height: 8px;
+  border: solid var(--button-text-color);
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.toggle-label {
+  margin-left: 4px;
+  cursor: pointer;
+}
+
+.prompt-label {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding: 6px 8px;
+  border-radius: 3px;
+  font-weight: 500;
+}
+
+.actions-container {
+  flex: 0 0 100px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.action-button {
+  background-color: transparent;
+  border: 1px solid var(--border-color);
+  cursor: pointer;
+  padding: 3px 6px;
+  border-radius: 3px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s, transform 0.1s;
+  width: 24px;
+  height: 24px;
+  position: relative;
+  z-index: 5; /* Ensure buttons are above other elements */
+  pointer-events: auto; /* Explicitly enable pointer events */
+}
+
+.action-button:hover {
+  background-color: var(--hover-color);
+  transform: translateY(-1px);
+}
+
+.action-button:active {
+  transform: translateY(0px);
+}
+
+.action-button svg {
+  pointer-events: none; /* Make SVG transparent to clicks */
+}
+
+.delete-btn {
+  color: #e06c75;
+  position: relative;
+  z-index: 6; /* Even higher z-index for delete buttons */
+}
+
+/* Add hover effect to make it clear when cursor is over the button */
+.delete-btn:hover {
+  background-color: rgba(224, 108, 117, 0.15);
+  transform: translateY(-2px);
+}
+
+.controls {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+  flex-wrap: wrap;
+}
+
+.filter-controls {
+  display: flex;
+  justify-content: flex-end;
+  margin: -8px 0 0 0;
+  gap: 8px;
+}
+
+.filter-toggle {
+  background-color: transparent;
+  border: 1px solid var(--border-color);
+  color: var(--text-color);
+  padding: 4px 8px;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.filter-toggle:hover {
+  background-color: var(--hover-color);
+}
+
+.filter-toggle.active {
+  background-color: rgba(255, 255, 255, 0.07);
+}
+
+.primary-button, .secondary-button {
+  padding: 6px 12px;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 13px;
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: transform 0.1s, background-color 0.2s;
+}
+
+.primary-button {
+  background-color: var(--controls-color, var(--vsc-button-color));
+  color: var(--button-text-color, var(--vsc-button-text-color));
+  box-shadow: 0 1px 2px var(--shadow-color);
+  border: 1px solid rgba(255, 255, 255, 0.15);  /* Add subtle border */
+  position: relative;
+  z-index: 2;  /* Ensure buttons are on top */
+}
+
+.primary-button:hover {
+  background-color: var(--controls-hover-color, var(--vsc-button-hover-color));
+  transform: translateY(-1px);
+}
+
+.primary-button:active {
+  transform: translateY(0);
+}
+
+.secondary-button {
+  background-color: transparent;
+  border: 1px solid var(--border-color);
+  color: var(--text-color);
+}
+
+.secondary-button:hover {
+  background-color: var(--hover-color);
+  transform: translateY(-1px);
+}
+
+.secondary-button:active {
+  transform: translateY(0);
+}
+
+/* Settings panel */
+.settings-panel {
+  background: rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  padding: 16px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+.settings-panel h3 {
+  margin-top: 0;
+  margin-bottom: 16px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-color);
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 8px;
+}
+
+.settings-field {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+  gap: 8px;
+}
+
+.settings-field label {
+  flex: 0 0 100px;
+  font-size: 13px;
+}
+
+.settings-field input[type="color"] {
+  height: 24px;
+  border: 1px solid var(--border-color);
+  background-color: var(--input-background);
+  cursor: pointer;
+  border-radius: 3px;
+  padding: 0;
+  width: 60px;
+}
+
+.settings-reset-btn {
+  background-color: transparent;
+  border: 1px solid var(--border-color);
+  color: var(--text-color);
+  border-radius: 3px;
+  font-size: 12px;
+  padding: 2px 8px;
+  cursor: pointer;
+}
+
+.settings-reset-btn:hover {
+  background-color: var(--hover-color);
+}
+
+.save-settings-btn {
+  margin-top: 8px;
+}
+
+.add-prompt-form {
+  width: 100%;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background-color: rgba(255, 255, 255, 0.02);
+  box-shadow: 0 2px 6px var(--shadow-color);
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-field label {
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.form-field input, .form-field textarea {
+  padding: 8px 10px;
+  border: 1px solid var(--border-color);
+  border-radius: 3px;
+  background-color: var(--input-background);
+  color: var(--input-foreground);
+  font-family: inherit;
+  transition: border-color 0.2s;
+}
+
+.form-field input:focus, .form-field textarea:focus {
+  outline: none;
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 2px rgba(0, 122, 204, 0.2);
+}
+
+.form-buttons {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+  margin-top: 8px;
+}
+
+.toast {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: var(--button-color);
+  color: var(--button-text-color);
+  padding: 8px 16px;
+  border-radius: 4px;
+  box-shadow: 0 4px 12px var(--shadow-color);
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  pointer-events: none;
+  z-index: 1000;
+}
+
+.toast.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Add these styles at the end of your style.css file */
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.confirm-dialog {
+  background-color: var(--background-color);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  padding: 20px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+  max-width: 300px;
+  width: 100%;
+}
+
+.confirm-dialog p {
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+.dialog-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
